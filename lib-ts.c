@@ -69,7 +69,7 @@ libts_set_zf_host_addr(void)
         return;
 
     CHECK_RC(cfg_get_instance(handle, NULL, &inst_name));
-    CHECK_RC(te_string_append(&zf_attr, "%s", inst_name));
+    te_string_append(&zf_attr, "%s", inst_name);
     free(inst_name);
 
     CHECK_RC(cfg_find_pattern_fmt(&addr_num, &addresses,
@@ -95,7 +95,7 @@ libts_set_zf_host_addr(void)
         return;
     }
 
-    CHECK_RC(te_string_append(&zf_attr, ";zfss_implicit_host=%s", inst_name));
+    te_string_append(&zf_attr, ";zfss_implicit_host=%s", inst_name);
     CHECK_RC(cfg_set_instance(handle, CVT_STRING, zf_attr.ptr));
 
     free(inst_name);
